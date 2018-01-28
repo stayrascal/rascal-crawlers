@@ -21,3 +21,16 @@ class AuthorSpider(scrapy.Spider):
             'birthdate': extract_with_css('.author-born-date::text'),
             'bio': extract_with_css('.author-description::text')
         }
+    
+    def parse_author_by_xpath(self, response):
+        def extract_with_xpath(query):
+           return response.xpath(query).extract_first().strip()
+
+        yield {
+            'name': extract_with_xpath('./h3[@class="author-title"]/text()'),
+            'birthdate': extract_with_xpath('.//div[@class="author-born-date"]/text()'),
+            'bio': extract_with_xpath('.//div[@class="author-description"]/text()')
+        }
+
+        
+       
