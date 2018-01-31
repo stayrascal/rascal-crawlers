@@ -10,5 +10,7 @@ import scrapy
 
 class CrawlersItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    link = scrapy.Field()
+    page = scrapy.Field()
+    spider = scrapy.Field()
+    timestamp = scrapy.Field()
